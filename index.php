@@ -58,26 +58,23 @@
             <div class="col-12 col-md-9 col-lg-6 content">
               <?php
               if ($page == 'main') {
-                  include ("main.php");
+                  include ('main.php');
               } else if ($page == 'galeria') {
-                  include ("galeria.php");
+                  include ('galeria.php');
               } else if ($page == 'historia') {
-                include ("historia.php");
+                include ('historia.php');
             } else if ($page == 'kontakt') {
-                include ("kontakt.php");
+                include ('kontakt.php');
             }
               ?>
             </div>
             <div class="col-3 d-none d-lg-block aside">
-              <img src="img/cafe2.jpg" alt="Cafe2">
-              <img src="img/cafe1.jpg" alt="Cafe1">
+              <?php include ('aside.php'); ?>
             </div>
           </div>
           <div class="row">
             <div class="col footer">
-              <a href="https://github.com/nazarowy96">Created and designed by Mateusz Nazarowicz. All right reserved. © 2020</a><br>
-              <a href="https://pl.freepik.com/">Obrazy pobrane z - pl.freepik.com</a><br>
-              <a href="https://getbootstrap.com/">Bootstrap</a>
+              <?php include ('footer.php'); ?>
             </div>
           </div>
       </div>
