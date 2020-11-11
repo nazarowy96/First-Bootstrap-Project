@@ -13,6 +13,13 @@
   <link rel="stylesheet" href="style.css" type="text/css">
   </head>
   <body>
+      <?php
+        if(isset($_GET['p'])) {
+            $page = $_GET['p'];
+        } else {
+            $page = 'main';
+        }
+      ?>
     <nav class="navbar sticky-top navbar-dark bg-dark d-md-none">
       <a class="navbar-brand" href="index.html"><img src="coffee-solid.svg" width="30" height="30" class="d-inline-block align-top" alt=""></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,17 +27,17 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.php">Strona główna <span class="sr-only">(current)</span></a>
+          <li class="nav-item <?php if($page == 'main') {echo 'active';} ?>">
+            <a class="nav-link" href="index.php">Strona główna <?php if($page == 'main') {echo '<span class="sr-only">(current)</span>';} ?></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="index.php?p=galeria">Galeria</a>
+          <li class="nav-item <?php if($page == 'galeria') {echo 'active';} ?>">
+            <a class="nav-link" href="index.php?p=galeria">Galeria <?php if($page == 'galeria') {echo '<span class="sr-only">(current)</span>';} ?></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="index.php?p=historia">Historia</a>
+          <li class="nav-item <?php if($page == 'historia') {echo 'active';} ?>">
+            <a class="nav-link" href="index.php?p=historia">Historia <?php if($page == 'historia') {echo '<span class="sr-only">(current)</span>';} ?></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="index.php?p=kontakt">Kontakt</a>
+          <li class="nav-item <?php if($page == 'kontakt') {echo 'active';} ?>">
+            <a class="nav-link" href="index.php?p=kontakt">Kontakt <?php if($page == 'kontakt') {echo '<span class="sr-only">(current)</span>';} ?></a>
           </li>
         </ul>
       </div>
@@ -43,21 +50,21 @@
           </div>
           <div class="row">
             <div class="col-3 d-none d-md-block nav">
-              <a href="index.php" id="selected">Strona główna</a>
-              <a href="index.php?p=galeria">Galeria</a>
-              <a href="index.php?p=historia">Historia</a>
-              <a href="index.php?p=kontakt">Kontakt</a>
+              <a href="index.php" <?php if ($page == 'main') {echo 'id="selected"';} ?>>Strona główna</a>
+              <a href="index.php?p=galeria" <?php if ($page == 'galeria') {echo 'id="selected"';} ?>>Galeria</a>
+              <a href="index.php?p=historia" <?php if ($page == 'historia') {echo 'id="selected"';} ?>>Historia</a>
+              <a href="index.php?p=kontakt" <?php if ($page == 'kontakt') {echo 'id="selected"';} ?>>Kontakt</a>
             </div>
             <div class="col-12 col-md-9 col-lg-6 content">
               <?php
-              if ($_GET["p"] == "") {
+              if ($page == 'main') {
                   include ("main.php");
-              } else if ($_GET["p"] == "galeria") {
+              } else if ($page == 'galeria') {
                   include ("galeria.php");
-              } else if ($_GET["p"] == "historia") {
+              } else if ($page == 'historia') {
                 include ("historia.php");
-            } else if ($_GET["p"] == "kontakt") {
-                include ("galeria.php");
+            } else if ($page == 'kontakt') {
+                include ("kontakt.php");
             }
               ?>
             </div>
